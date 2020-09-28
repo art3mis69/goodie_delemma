@@ -7,7 +7,7 @@ public class Main {
 
     private static List<int[]> arrayListCombo = new ArrayList<>();
     public static void main(String[] args) {
-        File file = new File("C:\\goodie-dilemma\\sample_input.txt");
+        File file = new File("C:\\Users\\yasha\\IdeaProjects\\goodie_dilemma\\sample_input.txt");
         List<Integer> goodieValueList = new  ArrayList<Integer>();
         BufferedReader br = null;
         StringBuilder outputBuilder = new StringBuilder();
@@ -69,7 +69,7 @@ public class Main {
         //File myObj = new File("C:\\goodie-dilemma\\sample_output.txt");
         FileWriter myWriter = null;
         try {
-            myWriter = new FileWriter("C:\\goodie-dilemma\\sample_output.txt");
+            myWriter = new FileWriter("C:\\Users\\yasha\\IdeaProjects\\goodie_dilemma\\sample_output.txt");
             myWriter.write(outputBuilder.toString());
         } catch (IOException e) {
             e.printStackTrace();
