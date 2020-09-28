@@ -9,24 +9,24 @@ public class Main {
     public static void main(String[] args) {
         File file = new File("C:\\Users\\yasha\\IdeaProjects\\goodie_dilemma\\sample_input.txt");
         List<Integer> goodieValueList = new  ArrayList<Integer>();
-        BufferedReader br = null;
-        StringBuilder outputBuilder = new StringBuilder();
+        BufferedReader br = null;//Reader
+        StringBuilder outputBuilder = new StringBuilder();//Writer
         outputBuilder.append("The goodies selected for distribution are:");
         outputBuilder.append("\t\n");
-        int employeeCount = 0;
+        int employeeCount = 0;//Employee Count
         HashMap goodieMap = new HashMap();
-        try {
-            br = new BufferedReader(new FileReader(file));
-            int lineNum =0;
+        try {                                                               //exception Handling
+            br = new BufferedReader(new FileReader(file));//Read the file
+            int lineNum =0;//Number of Lines
 
             String goodie;
             while ((goodie = br.readLine()) != null){
                 if (lineNum == 0){
-                    String employeeCountString = goodie.substring(goodie.indexOf(':')+1).trim();
-                    employeeCount = Integer.parseInt(employeeCountString);
+                    String employeeCountString = goodie.substring(goodie.indexOf(':')+1).trim();//triming the lines on Text file
+                    employeeCount = Integer.parseInt(employeeCountString);//converting the file to integer
                 }
                 if (lineNum > 3) {
-                    goodieMap = processGoodies(goodie, goodieMap);
+                    goodieMap = processGoodies(goodie, goodieMap);//grabing the goddies in text file
                     String goodieValue = goodie.substring(goodie.indexOf(':')+1).trim();
                     goodieValueList.add(Integer.parseInt(goodieValue));
                 }
@@ -40,7 +40,7 @@ public class Main {
         for (int i=0; i < goodieMap.size(); i++){
             data[i] =goodieValueList.get(i);
         }
-        printCombination(data, goodieMap.size(), employeeCount );
+        printCombination(data, goodieMap.size(), employeeCount );//Combination method
         HashMap sortedGoodieMap = new HashMap();
         List<String> combinationsList = new ArrayList<String>();
         int leastDifference =0;
@@ -64,12 +64,11 @@ public class Main {
         outputBuilder.append("And the difference between the chosen goodie with highest price and the lowest price is "+leastDifference);
     writeOutputToFile(outputBuilder);
     }
-
+//Write Method
     private static void writeOutputToFile(StringBuilder outputBuilder) {
-        //File myObj = new File("C:\\goodie-dilemma\\sample_output.txt");
         FileWriter myWriter = null;
         try {
-            myWriter = new FileWriter("C:\\Users\\yasha\\IdeaProjects\\goodie_dilemma\\sample_output.txt");
+            myWriter = new FileWriter("C:\\Users\\yasha\\IdeaProjects\\goodie_dilemma\\sample_output.txt");//Location
             myWriter.write(outputBuilder.toString());
         } catch (IOException e) {
             e.printStackTrace();
@@ -145,8 +144,7 @@ public class Main {
         // A temporary array to store all combination one by one
         int data[]=new int[r];
         List<int[]> arrayListCombo = new ArrayList<>();
-        // Print all combination using temprary array 'data[]'
+        // Printing all combination using temprary array 'data[]'
         combinationUtil(arr, data, 0, n-1, 0, r);
-       // return null;
     }
 }
